@@ -112,9 +112,13 @@ $message = main();
                 </div>
                 <div style="text-align: center;">
                     <br>
-                    <?php echo "" . $message['country'] . "<br>" ?>
-                    <?php echo "" . $message['capital'] . "<br>" ?>
-                    <?php echo "" . $message['description'] . "<br>" ?>
+                    <?php echo $message['country'] . "<br>" ?>
+                    <?php if ($message['capital'] != null) {
+                        echo "Capital: " . $message['capital'] . "<br>";
+                    } else {
+                        echo "<br>";
+                    } ?>
+                    <?php echo $message['description'] . "<br>" ?>
                 </div>
             </form>
         </div>
