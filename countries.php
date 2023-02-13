@@ -1,13 +1,83 @@
 <?php
-
-$details = "";
+$message = array(
+        "country" => "",
+        "capital" => "",
+        "description" => ""
+);
 
 function main()
 {
-
+    $countries = array(
+            "United States" => array(
+                    "capital" => "Washington D.C.",
+                    "description" => "The world's largest economy and a global military power."
+            ),
+            "China" => array(
+                    "capital" => "Beijing",
+                    "description" => "A communist state with a rapidly growing economy and the world's largest population."
+            ),
+            "India" => array(
+                    "capital" => "New Delhi",
+                    "description" => "A diverse democratic country with a rapidly growing economy and the world's second largest population."
+            ),
+            "Russia" => array(
+                    "capital" => "Moscow",
+                    "description" => "A vast transcontinental country with a rich history and a significant presence in global politics."
+            ),
+            "Japan" => array(
+                    "capital" => "Tokyo",
+                    "description" => "An island nation known for its technologically advanced industries and unique culture."
+            ),
+            "Brazil" => array(
+                    "capital" => "Brasília",
+                    "description" => "The largest country in South America, known for its diverse geography and abundant natural resources."
+            ),
+            "Indonesia" => array(
+                    "capital" => "Jakarta",
+                    "description" => "An archipelago nation with a diverse population and abundant natural resources, including oil and natural gas."
+            ),
+            "Pakistan" => array(
+                    "capital" => "Islamabad",
+                    "description" => "A predominantly Muslim country with a rapidly growing economy and strategic geopolitical location."
+            ),
+            "Bangladesh" => array(
+                    "capital" => "Dhaka",
+                    "description" => "A country with a large population and rapidly growing economy, located in South Asia."
+            ),
+            "Nigeria" => array(
+                    "capital" => "Abuja",
+                    "description" => "A country with a rapidly growing economy, rich cultural heritage, and large population, located in West Africa."
+            )
+    );
+    $return_value = array(
+            "country" => "",
+            "capital" => "",
+            "description" => ""
+    );
+    if (isset($_POST['submit'])) {
+        if (isset($_POST['country'])) {
+            $country = $_POST['country'];
+            $found = false;
+            foreach ($countries as $key => $value) {
+                if ($country == $key) {
+                    $return_value['country'] = $country;
+                    $return_value['capital'] = $value['capital'];
+                    $return_value['description'] = $value['description'];
+                    $found = true;
+                    break;
+                }
+            }
+            if (!$found) {
+                $return_value['country'] = "$country is not on the list.";
+                $return_value['capital'] = "";
+                $return_value['description'] = "";
+            }
+        }
+    }
+    return $return_value;
 }
 
-$message = main()
+$message = main();
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +112,9 @@ $message = main()
                 </div>
                 <div style="text-align: center;">
                     <br>
-                    <?php echo $message ?>
+                    <?php echo "" . $message['country'] . "<br>" ?>
+                    <?php echo "" . $message['capital'] . "<br>" ?>
+                    <?php echo "" . $message['description'] . "<br>" ?>
                 </div>
             </form>
         </div>
