@@ -79,7 +79,7 @@ $message = main()
             <form
                     action=""
                     method="POST"
-                    name="name-age-form">
+                    name="calculator-form">
                 <div class="mb-3">
                     <label for="input-x" class="form-label">First number</label>
                     <input

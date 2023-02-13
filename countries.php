@@ -97,7 +97,7 @@ $message = main();
             <form
                     action=""
                     method="POST"
-                    name="name-age-form">
+                    name="country-form">
                 <div class="mb-3">
                     <label for="input_country" class="form-label">Country</label>
                     <input
