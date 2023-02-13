@@ -56,7 +56,7 @@ function main()
     );
     if (isset($_POST['submit'])) {
         if (isset($_POST['country'])) {
-            $country = $_POST['country'];
+            $country = ucwords(trim($_POST['country']));
             $found = false;
             foreach ($countries as $key => $value) {
                 if ($country == $key) {
